@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ///TESTTTT KIRIM
+        ///TESTTTT KIRIM 222222222222
     }
 
     public void detail(View view) {
