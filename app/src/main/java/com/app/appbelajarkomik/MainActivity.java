@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ///TESTTTT KIRIM 222222222222 uuuuuuuuuuuuuuuuuuuuuuuuuuuu
+        ///ghdusgiudududgigud
     }
 
     public void detail(View view) {
