@@ -118,29 +118,10 @@
     </RelativeLayout>
 
 
-    <HorizontalScrollView
-        android:scrollbars="none"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTrend"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <include
-                layout="@layout/list_trend"/>
-            <include
-                layout="@layout/list_trend"/>
-
-            <include
-                layout="@layout/list_trend"/>
-
-            <include
-                layout="@layout/list_trend"/>
-
-
-        </LinearLayout>
-    </HorizontalScrollView>
+        android:layout_height="wrap_content"/>
 
 
     <ScrollView
