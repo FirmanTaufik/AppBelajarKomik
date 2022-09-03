@@ -1,6 +1,7 @@
 package com.app.appbelajarkomik;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,19 @@ public class rvAdapterTrend extends RecyclerView.Adapter<rvAdapterTrend.ViewHold
                 .load(list.getGambar())
                 .centerCrop()
                 .into(holder.gambar);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("judul",list.getJudul() );
+                intent.putExtra("gambar",list.getGambar() );
+                intent.putExtra("link",list.getLink() );
+
+               context. startActivity(intent);
+
+            }
+        });
 
     }
 

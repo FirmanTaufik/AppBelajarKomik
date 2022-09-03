@@ -9,6 +9,7 @@ import androidx.palette.graphics.Palette;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -16,17 +17,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DetailActivity extends AppCompatActivity {
+import com.bumptech.glide.Glide;
+
+public class DetailActivity extends AppCompatActivity implements ParsePageTask.Callback {
     private  FrameLayout frameLeft;
     private FrameLayout frameRight;
     private CustomBackgroundCurve customBackgroundCurve;
     private CardView cardChapter;
+    private ImageView imageView;
+    private TextView textViewJudul;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detail);
+        imageView = findViewById(R.id.imageView);
+        textViewJudul = findViewById(R.id.textViewJudul);
+        textViewJudul.setText(getIntent().getStringExtra("judul"));
+
+        Glide.with(this)
+                .load(getIntent().getStringExtra("gambar"))
+                .centerCrop()
+                .into(imageView);
+
+
         customBackgroundCurve = findViewById(R.id.custom);
         frameLeft = findViewById(R.id.frameLeft);
         frameRight = findViewById(R.id.frameRight);
@@ -50,7 +65,16 @@ public class DetailActivity extends AppCompatActivity {
                 Toast.makeText(DetailActivity.this, "Show Chapter", Toast.LENGTH_SHORT).show();
             }
         });
+
+        ParsePageTask parsePageTask = new ParsePageTask();
+        parsePageTask.execute(getIntent().getStringExtra("link"));
+        parsePageTask.setCallback(this);
+
     }
 
 
+    @Override
+    public void onChange(String response) {
+        Log.i( "onChange: ",response);
+    }
 }
