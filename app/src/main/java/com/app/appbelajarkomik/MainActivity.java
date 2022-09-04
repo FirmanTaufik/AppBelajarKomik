@@ -46,29 +46,34 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
 
     @Override
     public void onChange(String response) {
-        progressBar.setVisibility(View.GONE);
-        Document document = Jsoup.parse(response);
-        Elements postbody = document.getElementById("main").getElementsByClass("postbody");
-        //KOMIK POPULAR
-        Elements  mangapopuler = postbody.select("div.mangapopuler").select("div.odadingslider")
-                        .select("div.animepost");
+        try {
+            Document document = Jsoup.parse(response);
+            Elements postbody = document.getElementById("main").getElementsByClass("postbody");
+            //KOMIK POPULAR
+            Elements  mangapopuler = postbody.select("div.mangapopuler").select("div.odadingslider")
+                    .select("div.animepost");
 
-        for (int i = 0; i < mangapopuler.size() ; i++) {
-            String judul =  mangapopuler.get(i).select("div.bigor").select("a").select("div.tt").text();
-            String link =   mangapopuler.get(i).select("div.bigor").select("a").attr("href");
-            String gambar = mangapopuler.get(i).select("div.limit")
-                    .select("img").attr("src").replaceAll("width=146&height=208","");
-            String chapter = mangapopuler.get(i).select("div.bigor").select("div.adds")
-                            .select("a").text();
+            for (int i = 0; i < mangapopuler.size() ; i++) {
+                String judul =  mangapopuler.get(i).select("div.bigor").select("a").select("div.tt").text();
+                String link =   mangapopuler.get(i).select("div.bigor").select("a").attr("href");
+                String gambar = mangapopuler.get(i).select("div.limit")
+                        .select("img").attr("src").replaceAll("width=146&height=208","");
+                String chapter = mangapopuler.get(i).select("div.bigor").select("div.adds")
+                        .select("a").text();
 
-            listTrendingModelArrayList.add(new ListTrendingModel(judul,
-                    gambar,
-                    chapter,
-                    link));
+                listTrendingModelArrayList.add(new ListTrendingModel(judul,
+                        gambar,
+                        chapter,
+                        link));
 
-            Log.i( "onChange: ", chapter);
+                Log.i( "onChange: ", chapter);
+            }
+            rvAdapterTrend.notifyDataSetChanged();
+        }catch (NullPointerException n){
+            n.getMessage();
         }
-        rvAdapterTrend.notifyDataSetChanged();
+        progressBar.setVisibility(View.GONE);
+
 
     }
 }

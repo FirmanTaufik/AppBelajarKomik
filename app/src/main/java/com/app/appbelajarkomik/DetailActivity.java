@@ -5,14 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.Slide;
+import androidx.transition.Transition;
+import androidx.transition.TransitionManager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -27,6 +35,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.ArrayList;
+
 public class DetailActivity extends AppCompatActivity implements ParsePageTask.Callback {
     private  FrameLayout frameLeft;
     private FrameLayout frameRight;
@@ -39,12 +49,19 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
     private TextView textSinopsis,textGenre,
             textRating,textStatus,textViews;
     private SelectableRoundedImageView imageFlag;
+    private ImageButton btnClose;
+    private RecyclerView recyclerView;
+    private  rvAdapterChapter rvAdapterChapter;
+    private ArrayList<ListChapterModel> listChapterModels;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detail);
+        recyclerView = findViewById(R.id.recyclerView);
+        btnClose = findViewById(R.id.btnClose);
         imageFlag = findViewById(R.id.imageFlag);
         textViews = findViewById(R.id.textViews);
         textStatus = findViewById(R.id.textStatus);
@@ -79,13 +96,25 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
 
         });
 
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toogle(false);
+            }
+        });
 
         cardChapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                toogle(true);
                 Toast.makeText(DetailActivity.this, "Show Chapter", Toast.LENGTH_SHORT).show();
             }
         });
+        listChapterModels = new ArrayList<>();
+        rvAdapterChapter = new rvAdapterChapter(this, listChapterModels);
+        recyclerView.setAdapter(rvAdapterChapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
 
         ParsePageTask parsePageTask = new ParsePageTask();
         parsePageTask.execute(getIntent().getStringExtra("link"));
@@ -172,6 +201,35 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
             }
         }
 
+        //LIST EPISODE
+        Log.i( "onChangeEpisode: ",article.select("div.listeps").html());
+        Elements listEpisode = article.select("div.listeps")
+                .select("div.bxcl").select("ul").select("li");
+
+
+        for (Element eps :listEpisode) {
+            Log.i( "onChangeEpisodeList: ", eps.select("span").first().select("a").text() +
+                    " "+eps.select("span").select("a").attr("href")  );
+
+            listChapterModels.add(new ListChapterModel(eps.select("span").first().select("a").text(),
+                    eps.select("span").select("a").attr("href") ));
+
+        }
+
+        rvAdapterChapter.notifyDataSetChanged();
 
     }
+
+    private void toogle(boolean show){
+        View linearChapter = findViewById(R.id.linearChapter);
+        ViewGroup parent = findViewById(R.id.parent);
+
+        Transition transition = new Slide(Gravity.BOTTOM);
+        transition.setDuration(600);
+        transition.addTarget(R.id.linearChapter);
+
+        TransitionManager.beginDelayedTransition(parent, transition);
+        linearChapter.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
 }

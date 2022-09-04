@@ -38,7 +38,6 @@ public class ParsePageTask extends AsyncTask<String, Void, String> {
         if (mCallback!=null){
             mCallback.onChange(s);
         }
-        Log.i( "doInBackground: ", s);
 
     }
 }
