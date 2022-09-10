@@ -11,6 +11,7 @@ import androidx.transition.Slide;
 import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -232,4 +233,14 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
         linearChapter.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
+    public void share(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Aku Baca Komik " +textViewJudul.getText().toString() + " di Aplikasi "
+                +getString(R.string.app_name) + " Download di https://play.google.com/store/apps/details?id="+getPackageName() );
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
 }

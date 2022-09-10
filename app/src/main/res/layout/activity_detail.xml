@@ -229,6 +229,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:onClick="share"
                         app:cardBackgroundColor="@color/bgBtnDetail"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="8dp"

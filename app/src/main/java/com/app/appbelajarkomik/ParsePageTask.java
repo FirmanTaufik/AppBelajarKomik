@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 public class ParsePageTask extends AsyncTask<String, Void, String> {
-
+    private String TAG ="ParsePageTask";
     private Callback mCallback;
 
     public interface Callback{

@@ -37,8 +37,10 @@ public class rvAdapterChapter extends RecyclerView.Adapter<rvAdapterChapter.View
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChapterActivity.class);
-                intent.putExtra("chapter",listChapterModels.get(position).getChapter());
-                intent.putExtra("link",listChapterModels.get(position).getLink() );
+//                intent.putExtra("chapter",listChapterModels.get(position).getChapter());
+//                intent.putExtra("link",listChapterModels.get(position).getLink() );
+                intent.putParcelableArrayListExtra("list", listChapterModels);
+                intent.putExtra("pos", position);
                 context. startActivity(intent);
 
                 Log.i(  "onClick: ",listChapterModels.get(position).getLink() );

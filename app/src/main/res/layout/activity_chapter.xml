@@ -5,13 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChapterActivity">
+
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/linearBot" />
+
     <ProgressBar
         android:layout_centerHorizontal="true"
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    
+    <LinearLayout
+        android:weightSum="3"
+        android:padding="10dp"
+        android:background="@color/bgBtnDetail"
+        android:id="@+id/linearBot"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnPrevious"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textChapter"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:text="Chapter 15  "
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </RelativeLayout>
