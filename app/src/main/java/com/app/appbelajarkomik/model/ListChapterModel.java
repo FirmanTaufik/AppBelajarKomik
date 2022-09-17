@@ -1,4 +1,4 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

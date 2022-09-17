@@ -1,4 +1,4 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.utils;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.utils;
 
 import android.os.AsyncTask;
 import android.util.Log;

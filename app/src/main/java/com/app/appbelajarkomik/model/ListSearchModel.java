@@ -1,12 +1,12 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.model;
 
-public class ListTrendingModel {
-    private String judul, gambar, chapter, link;
+public class ListSearchModel {
+    private String judul, gambar, rating, link;
 
-    public ListTrendingModel(String judul, String gambar, String chapter, String link) {
+    public ListSearchModel(String judul, String gambar, String rating, String link) {
         this.judul = judul;
         this.gambar = gambar;
-        this.chapter = chapter;
+        this.rating = rating;
         this.link = link;
     }
 
@@ -26,12 +26,12 @@ public class ListTrendingModel {
         this.gambar = gambar;
     }
 
-    public String getChapter() {
-        return chapter;
+    public String getRating() {
+        return rating;
     }
 
-    public void setChapter(String chapter) {
-        this.chapter = chapter;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public String getLink() {

@@ -1,4 +1,4 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,12 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.app.appbelajarkomik.model.ListTrendingModel;
+import com.app.appbelajarkomik.utils.ParsePageTask;
+import com.app.appbelajarkomik.R;
+import com.app.appbelajarkomik.adapter.rvAdapterTrend;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
@@ -20,21 +28,35 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements ParsePageTask.Callback {
     private RecyclerView rvTrend;
     private ArrayList<ListTrendingModel> listTrendingModelArrayList;
-    private rvAdapterTrend rvAdapterTrend;
+    private com.app.appbelajarkomik.adapter.rvAdapterTrend rvAdapterTrend;
     private ProgressBar progressBar;
+    private EditText edtSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listTrendingModelArrayList = new ArrayList<>();
         progressBar = findViewById(R.id.progressBar);
-
+        edtSearch = findViewById(R.id.edtSearch);
         rvTrend = findViewById(R.id.rvTrend);
         rvTrend.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         rvAdapterTrend = new rvAdapterTrend(this,listTrendingModelArrayList);
         rvTrend.setAdapter(rvAdapterTrend);
 
+        edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    String keyword = edtSearch.getText().toString().trim();
+                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                    intent.putExtra("keyword", keyword);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         ///ghdusgiudududgigud
         ParsePageTask parsePageTask = new ParsePageTask();

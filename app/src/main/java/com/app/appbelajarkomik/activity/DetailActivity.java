@@ -1,9 +1,7 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +26,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.appbelajarkomik.utils.CustomBackgroundCurve;
+import com.app.appbelajarkomik.model.ListChapterModel;
+import com.app.appbelajarkomik.utils.ParsePageTask;
+import com.app.appbelajarkomik.R;
+import com.app.appbelajarkomik.adapter.rvAdapterChapter;
 import com.bumptech.glide.Glide;
 import com.joooonho.SelectableRoundedImageView;
 
@@ -52,7 +55,7 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
     private SelectableRoundedImageView imageFlag;
     private ImageButton btnClose;
     private RecyclerView recyclerView;
-    private  rvAdapterChapter rvAdapterChapter;
+    private com.app.appbelajarkomik.adapter.rvAdapterChapter rvAdapterChapter;
     private ArrayList<ListChapterModel> listChapterModels;
 
     @Override

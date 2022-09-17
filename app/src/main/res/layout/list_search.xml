@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_margin="8dp"
@@ -28,10 +29,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/chapter"
-        android:layout_marginTop="5dp"
-        android:text="Chapter 100"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <per.wsj.library.AndRatingBar
+            android:id="@+id/ratingBar"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/textRating"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            app:starColor="@color/gold"
+            android:rating="1"/>
+
+        <TextView
+            android:textAlignment="textEnd"
+            android:id="@+id/textRating"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="9.33" />
+    </RelativeLayout>
+
 </LinearLayout>

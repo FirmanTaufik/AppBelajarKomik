@@ -11,4 +11,6 @@
     <color name="bgBtnDetail">#161616</color>
     <color name="statusBarColor">#D8D8D8</color>
     <color name="testColor">#ED815F</color>
+
+    <color name="gold">#FFD700</color>
 </resources>

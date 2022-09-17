@@ -1,4 +1,4 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.adapter;
 
 
 import android.content.Context;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.app.appbelajarkomik.model.ListChapterModel;
+import com.app.appbelajarkomik.R;
+import com.app.appbelajarkomik.activity.ChapterActivity;
 
 import java.util.ArrayList;
 

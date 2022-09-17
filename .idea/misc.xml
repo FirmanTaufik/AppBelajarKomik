@@ -11,10 +11,12 @@
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_chapter.xml" value="0.18" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_detail.xml" value="0.14" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_search.xml" value="0.12441214194100043" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/bottom_sheet.xml" value="0.22" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_chapter.xml" value="0.1" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_item.xml" value="0.14" />
-        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_trend.xml" value="0.67" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_search.xml" value="0.33" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_trend.xml" value="0.1" />
       </map>
     </option>
   </component>

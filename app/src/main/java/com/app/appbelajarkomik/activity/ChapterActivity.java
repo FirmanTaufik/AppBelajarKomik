@@ -1,4 +1,4 @@
-package com.app.appbelajarkomik;
+package com.app.appbelajarkomik.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.app.appbelajarkomik.model.ListChapterModel;
+import com.app.appbelajarkomik.utils.ParsePageTask;
+import com.app.appbelajarkomik.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

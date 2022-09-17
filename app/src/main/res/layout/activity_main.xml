@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:layout_margin="10dp"
@@ -78,13 +78,16 @@
                 android:src="@drawable/ic_baseline_search_24" />
 
             <EditText
-                android:padding="10dp"
-                android:background="@android:color/transparent"
-                android:hint="Search Comic"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/imgSetting"
                 android:layout_toRightOf="@id/imgSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:background="@android:color/transparent"
+                android:hint="Search Comic"
+                android:padding="10dp" />
 
 
             <ImageView

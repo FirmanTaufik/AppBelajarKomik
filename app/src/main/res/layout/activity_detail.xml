@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".activity.DetailActivity">
 
 
     <androidx.core.widget.NestedScrollView
@@ -46,7 +46,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="200dp"/>
 
-                        <com.app.appbelajarkomik.CustomBackgroundCurve
+                        <com.app.appbelajarkomik.utils.CustomBackgroundCurve
                             android:layout_centerHorizontal="true"
                             android:id="@+id/custom"
                             android:rotation="180"
