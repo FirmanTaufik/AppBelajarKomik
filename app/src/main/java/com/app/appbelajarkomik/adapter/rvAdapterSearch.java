@@ -1,6 +1,7 @@
 package com.app.appbelajarkomik.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.appbelajarkomik.R;
+import com.app.appbelajarkomik.activity.DetailActivity;
 import com.app.appbelajarkomik.model.ListSearchModel;
 import com.bumptech.glide.Glide;
 
@@ -46,6 +48,18 @@ public class rvAdapterSearch extends RecyclerView.Adapter<rvAdapterSearch.ViewHo
 
         holder.ratingBar.setRating(rating);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("judul",list.getJudul() );
+                intent.putExtra("gambar",list.getGambar() );
+                intent.putExtra("link",list.getLink() );
+
+                context. startActivity(intent);
+
+            }
+        });
     }
 
     @Override

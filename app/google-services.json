@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "1001633799502",
+    "project_id": "naruhina-manga",
+    "storage_bucket": "naruhina-manga.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001633799502:android:8455c49f3525e003c2921f",
+        "android_client_info": {
+          "package_name": "com.app.appbelajarkomik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001633799502-ft986ghtkgtvperv2silggr4rc1a4bqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.appbelajarkomik",
+            "certificate_hash": "16f4824f7acb658bdef9ebe7668b0c2e9fa594cf"
+          }
+        },
+        {
+          "client_id": "1001633799502-edfaut5hlkrmvs8vs31nkltoauko80n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN2TAkE44z4j1iDPzyNmtLEts4Nodgmgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001633799502-edfaut5hlkrmvs8vs31nkltoauko80n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001633799502:android:d9b67af41cfdda02c2921f",
+        "android_client_info": {
+          "package_name": "com.naruhinamanga.naruhinamangaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001633799502-pi70aab36pnknkf9nl7lfabl6n3dqqng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.naruhinamanga.naruhinamangaapp",
+            "certificate_hash": "8897da3d7bde14ee5a8d40f71f4d122e98bfcd39"
+          }
+        },
+        {
+          "client_id": "1001633799502-edfaut5hlkrmvs8vs31nkltoauko80n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN2TAkE44z4j1iDPzyNmtLEts4Nodgmgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001633799502-edfaut5hlkrmvs8vs31nkltoauko80n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
