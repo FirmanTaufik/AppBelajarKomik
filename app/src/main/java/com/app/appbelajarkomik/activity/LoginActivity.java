@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.app.appbelajarkomik.R;
 import com.app.appbelajarkomik.model.UserModel;
+import com.app.appbelajarkomik.utils.Constant;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,13 +20,35 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
     private TextInputEditText edtEmail, edtPassword;
     private DatabaseReference mDatabase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        if (!getIntent().hasExtra("isDetail")) {
+            if (!Constant.getIsFirstTime(this)) {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+
+            Constant.setIsFirstTime(this, false);
+
+            if (Constant.getId(this)!=null) {
+                startActivity(new Intent(this, MainActivity.class));
+            }
+        }
+
+
+        findViewById(R.id.btnClose)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                    }
+                });
+
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
     }
@@ -54,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (userModel.getEmail().equals(edtEmail.getText().toString())
                         && userModel.getPassword().equals(edtPassword.getText().toString())) {
+                        Constant.setId(LoginActivity.this, userModel.getKey());
                         Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         return;
@@ -69,4 +93,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

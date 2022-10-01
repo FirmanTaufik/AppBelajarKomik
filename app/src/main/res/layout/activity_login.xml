@@ -8,6 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.LoginActivity">
 
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_margin="40dp"
+        android:scaleType="centerCrop"
+        android:tint="@android:color/black"
+        android:background="@android:color/transparent"
+        android:layout_gravity="right"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
     <TextView
         android:layout_marginTop="30dp"
         android:textStyle="bold"

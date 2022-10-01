@@ -208,6 +208,7 @@
                         android:layout_height="wrap_content">
 
                         <com.joooonho.SelectableRoundedImageView
+                            android:id="@+id/btnBookmark"
                             android:padding="13dp"
                             android:src="@drawable/ic_baseline_favorite_border_24"
                             android:layout_width="50dp"

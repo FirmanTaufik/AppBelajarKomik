@@ -1,5 +1,7 @@
 package com.app.appbelajarkomik.activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.palette.graphics.Palette;
@@ -9,6 +11,8 @@ import androidx.transition.Slide;
 import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,12 +30,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.appbelajarkomik.model.BookmarkModel;
+import com.app.appbelajarkomik.utils.Constant;
 import com.app.appbelajarkomik.utils.CustomBackgroundCurve;
 import com.app.appbelajarkomik.model.ListChapterModel;
 import com.app.appbelajarkomik.utils.ParsePageTask;
 import com.app.appbelajarkomik.R;
 import com.app.appbelajarkomik.adapter.rvAdapterChapter;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.joooonho.SelectableRoundedImageView;
 
 import org.jsoup.Jsoup;
@@ -57,6 +69,8 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
     private RecyclerView recyclerView;
     private com.app.appbelajarkomik.adapter.rvAdapterChapter rvAdapterChapter;
     private ArrayList<ListChapterModel> listChapterModels;
+    private  SelectableRoundedImageView btnBookmark;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +78,9 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detail);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        btnBookmark = findViewById(R.id.btnBookmark);
         recyclerView = findViewById(R.id.recyclerView);
         btnClose = findViewById(R.id.btnClose);
         imageFlag = findViewById(R.id.imageFlag);
@@ -124,6 +141,130 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
         parsePageTask.execute(getIntent().getStringExtra("link"));
         parsePageTask.setCallback(this);
 
+        btnBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Constant.getId(DetailActivity.this)==null) {
+
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(DetailActivity.this);
+                    builder1.setMessage("Login terlebih dahulu untuk bookmark");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Login",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(DetailActivity.this, LoginActivity.class);
+                                    intent.putExtra("isDetail", true);
+                                    startActivity(intent);
+                                    dialog.cancel();
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
+                    return;
+                }
+
+                mDatabase.child("bookmark")
+                        .child(Constant.getId(DetailActivity.this))
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.getChildrenCount()==0) {
+                                    saveToDatabase();
+                                }else {
+                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                        BookmarkModel bm = dataSnapshot.getValue(BookmarkModel.class);
+                                        if (bm.getLink().equals(getIntent().getStringExtra("link"))) {
+                                            deleteBookmark(dataSnapshot.getKey());
+                                            return;
+                                        }else {
+                                            saveToDatabase();
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
+            }
+        });
+
+        checkBookmark();
+
+    }
+
+    private void checkBookmark() {
+        mDatabase.child("bookmark")
+                .child(Constant.getId(DetailActivity.this))
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            BookmarkModel bm = dataSnapshot.getValue(BookmarkModel.class);
+                            if (bm.getLink().equals(getIntent().getStringExtra("link"))) {
+                                btnBookmark.setImageResource(R.drawable.ic_baseline_favorite_24);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void deleteBookmark(String key) {
+        mDatabase.child("bookmark")
+                .child(Constant.getId(DetailActivity.this))
+                .child(key)
+                .removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        Toast.makeText(DetailActivity.this, "komik berhasil di hapus dari bookmark", Toast.LENGTH_SHORT).show();
+                        btnBookmark.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                    }
+                });
+    }
+
+    private void saveToDatabase() {
+        BookmarkModel bookmarkModel = new BookmarkModel();
+        bookmarkModel.setLink(getIntent().getStringExtra("link"));
+        bookmarkModel.setJudul(getIntent().getStringExtra("judul"));
+        bookmarkModel.setImage(getIntent().getStringExtra("gambar"));
+
+        String key = mDatabase.child("bookmark")
+                .child(Constant.getId(DetailActivity.this)).push().getKey();
+
+        mDatabase.child("bookmark")
+                .child(Constant.getId(DetailActivity.this))
+                .child(key)
+                .setValue(bookmarkModel)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(DetailActivity.this, "komik berhasil di tandai", Toast.LENGTH_SHORT).show();
+                        btnBookmark.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    }
+                });
     }
 
 
