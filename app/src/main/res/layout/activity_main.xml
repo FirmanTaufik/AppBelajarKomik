@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+    android:id="@+id/parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,156 +9,234 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/photoProfile"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_baseline_account_circle_24"
-            app:tint="@color/black" />
-
-        <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical"
-            android:layout_toRightOf="@id/photoProfile"
-            android:layout_toLeftOf="@id/fabMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textColor="@color/black"
-                android:text="Welcome...."
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:text="Saepuloh dajfsafsopfisfip fpslf[ps[pfssfsfs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_centerVertical="true"
-            app:fabSize="mini"
-            android:id="@+id/fabMenu"
-            app:backgroundTint="@color/white"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_baseline_apps_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </RelativeLayout>
-
-    <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="15dp"
-        app:cardUseCompatPadding="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
+        android:layout_height="match_parent">
         <RelativeLayout
-            android:background="@android:color/transparent"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:tint="@color/black"
-                android:id="@+id/imgSearch"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_search_24" />
+                android:id="@+id/photoProfile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                app:tint="@color/black" />
 
-            <EditText
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:id="@+id/edtSearch"
+            <LinearLayout
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/photoProfile"
+                android:layout_toLeftOf="@id/fabBookmark"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/black"
+                    android:text="Welcome...."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/txtName"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="Saepuloh dajfsafsopfisfip fpslf[ps[pfssfsfs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:onClick="bookmark"
+                android:id="@+id/fabBookmark"
+                android:layout_toLeftOf="@id/fabMenu"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/imgSetting"
-                android:layout_toRightOf="@id/imgSearch"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_love"
+                app:backgroundTint="@color/white"
+                app:fabSize="mini" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_apps_24"
+                app:backgroundTint="@color/white"
+                app:fabSize="mini" />
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="15dp"
+            app:cardUseCompatPadding="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
                 android:background="@android:color/transparent"
-                android:hint="Search Comic"
-                android:padding="10dp" />
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:tint="@color/black"
+                    android:id="@+id/imgSearch"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_baseline_search_24" />
+
+                <EditText
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:id="@+id/edtSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/imgSetting"
+                    android:layout_toRightOf="@id/imgSearch"
+                    android:background="@android:color/transparent"
+                    android:hint="Search Comic"
+                    android:padding="10dp" />
+
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/imgSetting"
+                    android:src="@drawable/ic_setting"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Trending Comic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
             <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:id="@+id/imgSetting"
-                android:src="@drawable/ic_setting"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:src="@drawable/ic_baseline_more_horiz_24" />
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
 
-
-
-    <RelativeLayout
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="Trending Comic"
+        <ProgressBar
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTrend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_baseline_more_horiz_24" />
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-
-    <ProgressBar
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTrend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:text="Latest Update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
-    <ScrollView
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_baseline_more_horiz_24" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBaru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearChapter"
+        android:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:onClick="detail"
-            android:orientation="vertical"
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
-                layout="@layout/list_item"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <include
-                layout="@layout/list_item"/>
-            <include
-                layout="@layout/list_item"/>
+                <RelativeLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:text="List Genre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-            <include
-                layout="@layout/list_item"/>
+                    <ImageButton
+                        android:id="@+id/btnClose"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/transparent"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_baseline_close_24"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+                </RelativeLayout>
 
-            <include
-                layout="@layout/list_item"/>
-            <include
-                layout="@layout/list_item"/>
-        </LinearLayout>
-    </ScrollView>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-</LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearGenre"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</RelativeLayout>

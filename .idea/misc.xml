@@ -6,17 +6,23 @@
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/header_song_list.xml" value="0.1655" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.152" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.152" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.1365" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/ic_japan.xml" value="0.1195" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/ic_love.xml" value="0.112" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/drawable/round_button.xml" value="0.1655" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_bookmark.xml" value="0.12398460880718255" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_chapter.xml" value="0.18" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_detail.xml" value="0.14" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_login.xml" value="0.18" />
-        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_menu.xml" value="0.18" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/activity_search.xml" value="0.12441214194100043" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/bottom_sheet.xml" value="0.22" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_bookmark.xml" value="0.1" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_chapter.xml" value="0.1" />
-        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_item.xml" value="0.14" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_genre.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_item.xml" value="0.18" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_search.xml" value="0.33" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_trend.xml" value="0.1" />
       </map>

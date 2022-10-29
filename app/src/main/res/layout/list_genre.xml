@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/bgBtnDetail"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/textGenre"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:text="List Chapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</androidx.cardview.widget.CardView>

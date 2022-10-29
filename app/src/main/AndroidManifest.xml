@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBelajarKomik">
         <activity
+            android:name=".activity.BookmarkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.RegisterActivity"
             android:exported="false" />
         <activity
