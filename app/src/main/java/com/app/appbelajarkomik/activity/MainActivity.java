@@ -240,4 +240,8 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
     public void bookmark(View view) {
         startActivity(new Intent(this, BookmarkActivity.class));
     }
+
+    public void update(View view) {
+        startActivity(new Intent(this, UpdateActivity.class));
+    }
 }
