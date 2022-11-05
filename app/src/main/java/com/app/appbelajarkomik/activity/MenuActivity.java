@@ -86,6 +86,7 @@ public class MenuActivity extends AppCompatActivity implements ParsePageTask.Cal
     public void onChange(String response) {
         progressBar.setVisibility(View.GONE);
         parsePageTask= null;
+        if (response==null) return;
 
         Document document = Jsoup.parse(response);
         Elements elements = document.getElementById("wrap")

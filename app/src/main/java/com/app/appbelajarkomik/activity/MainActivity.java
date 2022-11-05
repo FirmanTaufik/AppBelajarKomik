@@ -8,8 +8,12 @@ import androidx.transition.Slide;
 import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -115,11 +119,11 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
 
     private void setUpGenre() {
         Document document = Jsoup.parse(Constant.htmlGenre());
-        Elements elements = document.select("a");
+        Elements elements = document.select("ul").select("li");
         for (Element e: elements ) {
             View view = LayoutInflater.from(this).inflate(R.layout.list_genre, null);
             TextView textGenre = view.findViewById(R.id.textGenre);
-            textGenre.setText(e.text());
+            textGenre.setText(e.select("a") .text());
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -150,6 +154,9 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
 
     String TAG ="MainActivityTAG";
     private void getName(){
+        if (Constant.getId(this)==null) {
+            return;
+        }
         mDatabase.child("users").child(Constant.getId(this))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -238,10 +245,65 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
     }
 
     public void bookmark(View view) {
+        if (Constant.getId(MainActivity.this)==null) {
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+            builder1.setMessage("Login terlebih dahulu untuk bookmark");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Login",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            intent.putExtra("isDetail", true);
+                            startActivity(intent);
+                            dialog.cancel();
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+
+            return;
+        }
         startActivity(new Intent(this, BookmarkActivity.class));
     }
 
     public void update(View view) {
         startActivity(new Intent(this, UpdateActivity.class));
     }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Tap Sekali Lagi Untuk Close Aplikasi", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
+
 }

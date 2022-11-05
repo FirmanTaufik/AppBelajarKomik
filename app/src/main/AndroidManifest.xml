@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBelajarKomik">
         <activity
-            android:name=".UpdateActivity"
+            android:name=".activity.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".activity.BookmarkActivity"

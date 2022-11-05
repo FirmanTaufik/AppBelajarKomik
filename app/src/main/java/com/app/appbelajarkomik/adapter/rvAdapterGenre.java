@@ -47,6 +47,7 @@ public class rvAdapterGenre extends RecyclerView.Adapter<rvAdapterGenre.ViewHold
         Glide.with(context).load(list.getGambar())
                 .into(holder.image);
 
+        holder.textChapter.setVisibility(View.GONE);
 
         holder.txtJenis.setText(list.getJenis());
         holder.textWarna.setText(list.getWarna());
@@ -75,9 +76,10 @@ public class rvAdapterGenre extends RecyclerView.Adapter<rvAdapterGenre.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private SelectableRoundedImageView image;
-        private TextView textTitle,txtJenis,textRating,textWarna;
+        private TextView textTitle,txtJenis,textRating,textWarna,textChapter;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            textChapter = itemView.findViewById(R.id.textChapter);
             image = itemView.findViewById(R.id.image);
             textTitle = itemView.findViewById(R.id.textTitle);
             txtJenis = itemView.findViewById(R.id.txtJenis);

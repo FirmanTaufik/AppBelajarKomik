@@ -212,6 +212,7 @@ public class DetailActivity extends AppCompatActivity implements ParsePageTask.C
     }
 
     private void checkBookmark() {
+        if (Constant.getId(DetailActivity.this)==null) return;
         mDatabase.child("bookmark")
                 .child(Constant.getId(DetailActivity.this))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
