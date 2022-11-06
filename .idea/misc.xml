@@ -24,6 +24,7 @@
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_chapter.xml" value="0.1" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_genre.xml" value="0.1" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_item.xml" value="0.18" />
+        <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_latest.xml" value="0.5" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_search.xml" value="0.33" />
         <entry key="..\:/Android Studio/Duit/AppBelajarKomik/app/src/main/res/layout/list_trend.xml" value="0.1" />
       </map>
@@ -34,5 +35,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="AppBelajarKomik.app" />
+      </set>
+    </option>
   </component>
 </project>

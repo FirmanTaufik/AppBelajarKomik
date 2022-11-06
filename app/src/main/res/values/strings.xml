@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppBelajarKomik</string>
+    <string name="notification_channel_id">233</string>
+    <string name="notification_channel_name">channelname</string>
 </resources>

@@ -2,6 +2,9 @@ package com.app.appbelajarkomik.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.Slide;
@@ -9,8 +12,15 @@ import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -29,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.appbelajarkomik.adapter.rvAdapterBaru;
+import com.app.appbelajarkomik.ads.ManagerAds;
 import com.app.appbelajarkomik.model.ListChapterBaru;
 import com.app.appbelajarkomik.model.ListTrendingModel;
 import com.app.appbelajarkomik.model.UserModel;
@@ -115,6 +126,19 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
             }
         });
         setUpGenre();
+
+        if (Constant.getId(this)==null) {
+            FloatingActionButton floatingActionButton = findViewById(R.id.fabLogout);
+            floatingActionButton.hide();
+        }
+
+        setAds();
+
+    }
+
+    private void setAds() {
+        ManagerAds managerAds = new ManagerAds(this);
+        managerAds.setBanner(findViewById(R.id.relativeAds));
     }
 
     private void setUpGenre() {
@@ -305,5 +329,34 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
             }
         }, 2000);
     }
+
+    public void logout(View view) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+        builder1.setMessage("Apakah Anda yakin ingin logout");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Ya",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Constant.setId(MainActivity.this, null);
+                        Constant.setIsFirstTime(MainActivity.this, true);
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "tidak",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
 
 }

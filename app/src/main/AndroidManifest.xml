@@ -44,6 +44,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <service android:name=".service.MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data android:name="applovin.sdk.key"
+            android:value="PqfTeJNxlLLZrXcq1Qy0vuIpIl5mihraPs6fu2MsrvcbTeiSqQwb7qld4ufKet4uuNQLZ46PmSuHK1MRBf1_kq"/>
     </application>
 
 </manifest>

@@ -25,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setAds();
+
         if (!getIntent().hasExtra("isDetail")) {
             if (!Constant.getIsFirstTime(this)) {
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -51,6 +53,12 @@ public class LoginActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
+    }
+
+    private void setAds() {
+        Constant.setBannerId(this,"22c95a7a8f8a4503");
+        Constant.setInterId(this, "58a7b2c937ba1c2f");
+        Constant.setNativeId(this,"58a7b2c937ba1c2f");
     }
 
     public void regsiter(View view) {

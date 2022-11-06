@@ -8,6 +8,10 @@ public class Constant {
     private static final String PREF ="pref";
 
 
+    private static final String AdsId="AdsId";
+    private static final String BannerId= "BannerId";
+    private static final String InterId="InterId";
+    private static final String NativeId="NativeId";
     public static String idLogin = "idLogin";
 
     public static String isFirstTime = "isFirstTime";
@@ -26,10 +30,6 @@ public class Constant {
         return sharedPreferences.getBoolean(isFirstTime, true);
     }
 
-
-
-
-
     public static void setId(Context context, String value) {
         sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -42,6 +42,47 @@ public class Constant {
         sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return sharedPreferences.getString(idLogin, null);
     }
+
+
+    public static void setBannerId(Context context, String id){
+        sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEditor = sharedPreferences.edit();
+        myEditor.putString(BannerId, id);
+        myEditor.commit();
+        myEditor.apply();
+    }
+
+    public static String getBannerId(Context context){
+        sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(BannerId,null);
+    }
+
+    public static void setInterId(Context context, String id){
+        sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEditor = sharedPreferences.edit();
+        myEditor.putString(InterId, id);
+        myEditor.commit();
+        myEditor.apply();
+    }
+
+    public static String getInterId(Context context){
+        sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(InterId,null);
+    }
+
+    public static void setNativeId(Context context, String id){
+        sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEditor = sharedPreferences.edit();
+        myEditor.putString(NativeId, id);
+        myEditor.commit();
+        myEditor.apply();
+    }
+
+    public static String getNativeId(Context context){
+        sharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(NativeId,null);
+    }
+
 
     public static String htmlGenre(){
        return "<div class=\"post-show\">\n" +

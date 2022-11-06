@@ -10,6 +10,7 @@
     tools:context=".activity.MainActivity">
 
     <LinearLayout
+        android:layout_above="@+id/frameAds"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,7 +32,7 @@
                 android:layout_marginLeft="10dp"
                 android:orientation="vertical"
                 android:layout_toRightOf="@id/photoProfile"
-                android:layout_toLeftOf="@id/fabBookmark"
+                android:layout_toLeftOf="@id/linearRight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -51,36 +52,47 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabBookmark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/fabMenu"
-                android:onClick="bookmark"
-                android:src="@drawable/ic_love"
-                app:backgroundTint="@color/white"
-                app:fabSize="mini" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabMenu"
-                android:layout_toLeftOf="@+id/fabLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:id="@+id/linearRight"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_apps_24"
-                app:backgroundTint="@color/white"
-                app:fabSize="mini" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_logout_24"
-                app:backgroundTint="@color/white"
-                app:fabSize="mini" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabBookmark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/fabMenu"
+                    android:onClick="bookmark"
+                    android:src="@drawable/ic_love"
+                    app:backgroundTint="@color/white"
+                    app:fabSize="mini" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabMenu"
+                    android:layout_toLeftOf="@+id/fabLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_apps_24"
+                    app:backgroundTint="@color/white"
+                    app:fabSize="mini" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabLogout"
+                    android:onClick="logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_baseline_logout_24"
+                    app:backgroundTint="@color/white"
+                    app:fabSize="mini" />
+            </LinearLayout>
+
+
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
@@ -258,4 +270,11 @@
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/relativeAds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
