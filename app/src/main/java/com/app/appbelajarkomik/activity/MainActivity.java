@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements ParsePageTask.Cal
     private void setAds() {
         ManagerAds managerAds = new ManagerAds(this);
         managerAds.setBanner(findViewById(R.id.relativeAds));
+        managerAds.setInterstitial();
     }
 
     private void setUpGenre() {

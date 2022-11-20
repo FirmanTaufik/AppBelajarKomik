@@ -125,6 +125,7 @@ public class ManagerAds {
                     @Override
                     public void onAdLoaded(final MaxAd maxAd)
                     {
+                        Log.d(TAG, "onAdLoaded: inter");
                         retryAttempt = 0;
                         if (interstitialAd.isReady())   {
                             interstitialAd.showAd();
@@ -134,6 +135,7 @@ public class ManagerAds {
                     @Override
                     public void onAdLoadFailed(final String adUnitId, final MaxError error)
                     {
+                        Log.d(TAG, "onAdLoadFailed: inter " +error.getMessage());
                         retryAttempt++;
                         long delayMillis = TimeUnit.SECONDS.toMillis( (long) Math.pow( 2, Math.min( 6, retryAttempt ) ) );
                         new Handler().postDelayed(new Runnable()
@@ -148,15 +150,21 @@ public class ManagerAds {
                     @Override
                     public void onAdDisplayFailed(final MaxAd maxAd, final MaxError error)
                     {
+                        Log.d(TAG, "onAdDisplayFailed: inter "+error.getMessage());
                         interstitialAd.loadAd();
                     }
                     @Override
-                    public void onAdDisplayed(final MaxAd maxAd) {}
+                    public void onAdDisplayed(final MaxAd maxAd) {
+                        Log.d(TAG, "onAdDisplayed: inter");
+                    }
                     @Override
-                    public void onAdClicked(final MaxAd maxAd) {}
+                    public void onAdClicked(final MaxAd maxAd) {
+                        Log.d(TAG, "onAdClicked: inter");
+                    }
                     @Override
                     public void onAdHidden(final MaxAd maxAd)
                     {
+                        Log.d(TAG, "onAdHidden: inter");
                         // interstitialAd.loadAd();
                     }
                 };
